@@ -3,7 +3,7 @@ from django.contrib.auth.models import auth
 from django.contrib import messages
 from django.contrib import auth
 from django.contrib.auth.models import User
-
+from accounts.models import Users
 # Create your views here.
 
 from .models import FindBusiness, Trending, UserRegister
@@ -46,8 +46,8 @@ def login(request):
         use=request.POST['username']
         pass1=request.POST['password']
         
-        user=auth.authenticate(email=use,password=pass1)
-        
+        user=auth.authenticate(username=use,password=pass1)
+        print(user)
         if user is not None:
             auth.login(request,user)
             
@@ -80,10 +80,15 @@ def register(request):
                 messages.info(request, '*Email taken')
                 return redirect('register')
             else:
+                
+                user1 = Users.objects.create_user(first_name=firstname, last_name=lastname, email=email, password=password,
+                                    username=username,is_user=True
+                                    )
                 user = UserRegister(firstname=firstname, lastname=lastname, email=email, password=password,
                                     username=username
                                     )
-                user.save();
+                user.save()
+                user1.save()
 
         else:
             messages.info(request, '*Password not matching')

@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #myapps
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -75,13 +77,20 @@ WSGI_APPLICATION = 'sample.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'pb_46',
         'USER': 'postgres',
         'PASSWORD': '1234',
         'HOST': 'localhost'
+    }
+}'''
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
     }
 }
 
@@ -129,3 +138,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'destination')
 
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+
+
+AUTH_USER_MODEL = 'accounts.Users'

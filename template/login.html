@@ -111,23 +111,23 @@
 
             <h2 class="mb-5 text-black">Log In</h2>
 
-            <form action="index" class="p-5 bg-white">
-             
-              <div class="row form-group">
-                
-                <div class="col-md-12">
-                  <label class="text-black" for="email">Email</label> 
-                  <input type="email" id="email" class="form-control" required>
-                </div>
-              </div>
+            <form action="index" method="post" class="p-5 bg-white">
+              {% csrf_token %}
+             <div class="row form-group">
+               
+               <div class="col-md-12">
+                 <label class="text-black" for="email">Username</label> 
+                 <input type="text" id="email" name="username" class="form-control" required>
+               </div>
+             </div>
 
-              <div class="row form-group">
-                
-                <div class="col-md-12">
-                  <label class="text-black" for="subject">Password</label> 
-                  <input type="password" id="subject" class="form-control" required>
-                </div>
-              </div>
+             <div class="row form-group">
+               
+               <div class="col-md-12">
+                 <label class="text-black" for="subject">Password</label> 
+                 <input type="password" id="subject" name="password" class="form-control" required>
+               </div>
+             </div>
 
               <div class="row form-group">
                 <div class="col-12">

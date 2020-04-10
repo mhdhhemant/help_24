@@ -41,7 +41,26 @@ def listingssingle(request):
 
 
 def login(request):
-    return render(request, 'login.html')
+    
+    if request.method=="POST":
+        use=request.POST['username']
+        pass1=request.POST['password']
+        
+        user=auth.authenticate(email=use,password=pass1)
+        
+        if user is not None:
+            auth.login(request,user)
+            
+            return redirect('/')
+        else:
+            return redirect('login')
+    else:
+        return render(request, 'login.html')
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
+
 
 
 def register(request):

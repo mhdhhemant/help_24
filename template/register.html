@@ -122,7 +122,7 @@
 
             
 
-            <form action="register" class="p-5 bg-white" method="post">
+            <form action="register" class="p-5 bg-white" method="POST">
                 {% csrf_token %}
               <div class="row form-group">
                 
@@ -155,20 +155,28 @@
                   <input type="text" id="name" name="username" class="form-control" required  pattern=".{6,}" title="User Name must at least contains 6 characters"> 
                 </div>
               </div>
+              <label class="text-black" for="name">Role</label>
+              
+              <div class="radio">
+                <label><input type="radio" name="role" value="user">User</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="role" value="business">Business Owner</label>
+              </div>
 
 
 
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="text-black" for="subject">Password</label> 
-                  <input type="password" id="subject" name="password" class="form-control" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password must contain at least 8 characters, including UPPER/lowercase and numbers.">
+                  <input type="password" id="subject" name="password" class="form-control" title="Password must contain at least 8 characters, including UPPER/lowercase and numbers.">
                 </div>
               </div>
 
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="text-black" for="subject">Re-type Password</label> 
-                  <input type="password" id="subject" name="cpassword" class="form-control" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Please enter the same Password as above.">
+                  <input type="password" id="subject" name="cpassword" class="form-control"  title="Please enter the same Password as above.">
                   <div class="valid-feedback" >
             
                       {% for message in messages %}

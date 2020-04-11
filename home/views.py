@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from accounts.models import Users
 # Create your views here.
 
-from .models import FindBusiness, Trending, UserRegister
+from .models import FindBusiness, Trending, UserRegister, Business_detail
 
 
 def index(request):
@@ -71,7 +71,7 @@ def register(request):
         password = request.POST['password']
         password1 = request.POST['cpassword']
         username = request.POST['username']
-
+        role = request.POST['role']
         if password == password1:
             if UserRegister.objects.filter(username=username).exists():
                 messages.info(request, '*Username taken')
@@ -80,14 +80,24 @@ def register(request):
                 messages.info(request, '*Email taken')
                 return redirect('register')
             else:
+                if(role== 'user'):
+                    user1 = Users.objects.create_user(first_name=firstname, last_name=lastname, email=email, password=password,
+                                        username=username,is_user=True
+                                        )
+                    user = UserRegister(firstname=firstname, lastname=lastname, email=email, password=password,
+                                        username=username
+                                        )
+
+                    user.save()
+                elif(role == 'business'):
+                    user1 = Users.objects.create_user(first_name=firstname, last_name=lastname, email=email, password=password,
+                                        username=username,is_businessOwner=True
+                                        )
+                    user = Business_detail(firstname=firstname, lastname=lastname, email=email, password=password,
+                                        username=username
+                                        )
+                    user.save()
                 
-                user1 = Users.objects.create_user(first_name=firstname, last_name=lastname, email=email, password=password,
-                                    username=username,is_user=True
-                                    )
-                user = UserRegister(firstname=firstname, lastname=lastname, email=email, password=password,
-                                    username=username
-                                    )
-                user.save()
                 user1.save()
 
         else:

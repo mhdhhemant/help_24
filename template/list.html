@@ -50,13 +50,14 @@
   
               <h2 class="mb-5 text-black" style="text-align: center";>Add your Business details</h2>
   
-              <form action="login" class="p-5 bg-white">
+              <form action="listings" class="p-5 bg-white" method="POST">
+                {% csrf_token %}
                
                 <div class="row form-group">
                   
                   <div class="col-md-12">
                     <label class="text-black" for="pin">Pincode</label> 
-                    <input type="location" id="pin" class="form-control" placeholder="143401" required >
+                    <input type="location" name="pincode" id="pin" class="form-control" placeholder="143401" required pattern="[0-9]">
                   </div>
                 </div>
   
@@ -64,7 +65,7 @@
                   
                   <div class="col-md-12">
                     <label class="text-black" for="name">Business Name</label> 
-                    <input type="text" id="name" class="form-control" required> 
+                    <input type="text" name="businessname" id="name" class="form-control" required> 
                   </div>
                 </div>
   
@@ -72,49 +73,56 @@
                 <div class="row form-group">
                   <div class="col-md-12">
                     <label class="text-black" for="subject">Categories</label> 
-                    <input type="categories" id="subject" class="form-control" placeholder="plumbing.." required>
+                    <input type="categories" name="category" id="subject" class="form-control" placeholder="plumbing.." required>
                   </div>
                 </div>
   
                 <div class="row form-group">
                   <div class="col-md-12">
                     <label class="text-black" for="subject">Business Phone</label> 
-                    <input type="phone" id="subject" class="form-control" placeholder="9999999988" required>
+                    <input type="phone" name="phone" id="subject" class="form-control" placeholder="9999999988" maxlength="10" pattern="[0-9]" required>
                   </div>
                 </div>
 
                 <div class="row form-group">
                     <div class="col-md-12">
                       <label class="text-black" for="subject">Address</label> 
-                      <input type="text" id="subject" class="form-control" placeholder="123 street main road.." required>
+                      <input type="text" name="address" id="subject" class="form-control" placeholder="123 street main road.." required>
                     </div>
                   </div>
 
                   <div class="row form-group">
                     <div class="col-md-12">
                       <label class="text-black" for="subject">Landmark</label> 
-                      <input type="text" id="subject" class="form-control" placeholder="Near landmark" required>
+                      <input type="text" name="landmark" id="subject" class="form-control" placeholder="Near landmark" required>
                     </div>
                   </div>
 
                   <div class="row form-group">
                     <div class="col-md-12">
                       <label class="text-black" for="subject">Web Address</label> 
-                      <input type="url" id="subject" class="form-control" placeholder="www.yourbusinessaddress.com" required>
+                      <input type="url" name="webaddress" id="subject" class="form-control" placeholder="www.yourbusinessaddress.com" required>
                     </div>
                   </div>
 
                   <div class="row form-group">
                     <div class="col-md-12">
                       <label class="text-black" for="subject">Email</label> 
-                      <input type="email" id="subject" class="form-control" placeholder="name@yourservices.com" required>
+                      <input type="email" name="email" id="subject" class="form-control" placeholder="name@yourservices.com" required  ​pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="enter valid email">
+                    </div>
+                  </div>
+
+                  <div class="row form-group">
+                    <div class="col-md-12">
+                      <label class="text-black" for="img">Select Image for Business</label> 
+                      <input type="file" name="image" id="img" class="form-control" name="img" accept="image/*">
                     </div>
                   </div>
 
                   <div class="row form-group">
                     <div class="col-md-12">
                       <label class="text-black" for="description">Add Description</label> 
-                      <textarea name="desc1" id="message" cols="25" rows="4" class="form-control" placeholder="Add your Business Description here..."></textarea>
+                      <textarea name="description" id="message" cols="25" rows="4" class="form-control" placeholder="Add your Business Description here..."></textarea>
                     </div>
                   </div>
 

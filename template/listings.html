@@ -92,8 +92,8 @@
             
             <div class="row justify-content-center mt-5">
               <div class="col-md-8 text-center">
-                <h1>Ads Listings</h1>
-                <p class="mb-0">Choose product you want</p>
+                <h1>Business in City</h1>
+                <p class="mb-0">Choose Services you Want</p>
               </div>
             </div>
 
@@ -107,8 +107,26 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
-
-            <div class="row">
+            {%for i in numbers %}
+            <div class="card mb-3" style="max-width: 700px; height:300px;">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" class="card-img" alt="..." style="width:100%; height:21.9vw; object-fit:cover;">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <span class="category" style="border:2px solid white;background-color:pink;border-radius:10px;padding:5px;">Cars &amp; Vehicles</span><br>
+                    <br>
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            
+            <!-- <div class="row">
               <div class="col-lg-6">
                 
                 <div class="d-block d-md-flex listing vertical">
@@ -324,12 +342,12 @@
                   </div>
                 </div>
                 
-              </div>
+              </div> -->
 
 
               
 
-            </div>
+            <!-- </div> -->
 
             <div class="col-12 mt-5 text-center">
               <div class="custom-pagination">
@@ -355,17 +373,17 @@
                       <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
                       <select class="form-control" name="" id="">
                         <option value="">All Categories</option>
-                        <option value="" selected="">Real Estate</option>
-                        <option value="">Books &amp;  Magazines</option>
-                        <option value="">Furniture</option>
+                        <option value="" selected="">Plumbers</option>
+                        <option value="">Gyms &amp;  Parks</option>
+                        <option value="">Carpenter</option>
                         <option value="">Electronics</option>
-                        <option value="">Cars &amp; Vehicles</option>
+                        <option value="">Movers</option>
                         <option value="">Others</option>
                       </select>
                     </div>
                 </div>
                 <div class="form-group">
-                  <!-- select-wrap, .wrap-icon -->po789\
+                  <!-- select-wrap, .wrap-icon -->
                   <div class="wrap-icon">
                     <span class="icon icon-room"></span>
                     <input type="text" placeholder="Location" class="form-control">

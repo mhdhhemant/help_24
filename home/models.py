@@ -30,5 +30,21 @@ class Business_detail(models.Model):
     password=models.CharField(max_length=200)
     username=models.CharField(max_length=100)
 
+
     def __str__(self):
         return self.username
+
+class Business_Register(models.Model):
+    business_name=models.CharField(max_length=50)
+    pincode = models.IntegerField()
+    email=models.EmailField(max_length=200)
+    category=models.CharField(max_length=30)
+    phone=models.BigIntegerField()
+    address=models.CharField(max_length=200)
+    landmark=models.CharField(max_length=100)
+    website=models.URLField(max_length=200)
+    Description=models.TextField()
+    image=models.ImageField(upload_to='pics')
+
+    def __str__(self):
+        return self.business_name

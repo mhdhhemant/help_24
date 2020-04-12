@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from accounts.models import Users
 # Create your views here.
 
-from .models import FindBusiness, Trending, UserRegister, Business_detail
+from .models import FindBusiness, Trending, UserRegister, Business_detail,Business_Register
 
 
 def index(request):
@@ -31,9 +31,30 @@ def blogsingle(request):
 def contact(request):
     return render(request, 'contact.html')
 
+def list(request):
+    if request.method=="POST":
+        pin=request.post['pincode']
+        Bname=request.post['businessname']
+        category=request.post['category']
+        Bphone=request.post['phone']
+        Address=request.post['address']
+        Landmark=request.post['landmark']
+        Waddress=request.post['webaddress']
+        Email=request.post['email']
+        Image=request.post['image']
+        Adescription=request.post['description']
+
+        business=Business_Register(business_name=Bname,pincode=pin,email=Email,category=category,
+                                   phone=Bphone,address=Address,landmark=Landmark,website=Waddress,
+                                    Description=Adescription,image=Image)
+        business.save()
+    
+    else:
+        return render(request,'list.html')
+
 
 def listings(request):
-    return render(request, 'listings.html')
+    return render(request, 'listings.html',{'numbers':range(10)})
 
 
 def listingssingle(request):

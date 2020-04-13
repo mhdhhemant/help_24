@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib import auth
 from django.contrib.auth.models import User
 from accounts.models import Users
+from django.core.mail import send_mail
 # Create your views here.
 
 from .models import FindBusiness, Trending, UserRegister, Business_detail,Business_List
@@ -44,7 +45,7 @@ def list(request):
         Image=request.post['image']
         Adescription=request.post['description']
 
-        business=Business_List.business_list_set.Create(business_name=Bname,pincode=pin,email=Email,category=category,
+        business=Business_List(business_name=Bname,pincode=pin,email=Email,category=category,
                                    phone=Bphone,address=Address,landmark=Landmark,website=Waddress,
                                     Description=Adescription,image=Image)
         business.save()
@@ -121,6 +122,14 @@ def register(request):
                     user.save()
                 
                 user1.save()
+                send_mail(
+                    'Confirmation',
+                    'This mail is intended to use for confirming your account.',
+                    'EMAIL_HOST_USER',
+                    [email],
+                    fail_silently=False
+
+                )
 
         else:
             messages.info(request, '*Password not matching')

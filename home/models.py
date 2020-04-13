@@ -34,7 +34,7 @@ class Business_detail(models.Model):
     def __str__(self):
         return self.username
 
-class Business_Register(models.Model):
+class Business_List(models.Model):
     business_name=models.CharField(max_length=50)
     pincode = models.IntegerField()
     email=models.EmailField(max_length=200)

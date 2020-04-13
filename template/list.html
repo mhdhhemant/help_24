@@ -50,14 +50,14 @@
   
               <h2 class="mb-5 text-black" style="text-align: center";>Add your Business details</h2>
   
-              <form action="listings" class="p-5 bg-white" method="POST">
+              <form action="list"  method="POST" class="p-5 bg-white">
                 {% csrf_token %}
                
                 <div class="row form-group">
                   
                   <div class="col-md-12">
                     <label class="text-black" for="pin">Pincode</label> 
-                    <input type="location" name="pincode" id="pin" class="form-control" placeholder="143401" required pattern="[0-9]">
+                    <input type="location" name="pincode" id="pin" class="form-control" placeholder="143401" required pattern="[0-9]+">
                   </div>
                 </div>
   
@@ -80,7 +80,7 @@
                 <div class="row form-group">
                   <div class="col-md-12">
                     <label class="text-black" for="subject">Business Phone</label> 
-                    <input type="phone" name="phone" id="subject" class="form-control" placeholder="9999999988" maxlength="10" pattern="[0-9]" required>
+                    <input type="phone" name="phone" id="subject" class="form-control" placeholder="9999999988" maxlength="10" pattern="[0-9]+" required>
                   </div>
                 </div>
 

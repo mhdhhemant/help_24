@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from accounts.models import Users
 # Create your views here.
 
-from .models import FindBusiness, Trending, UserRegister, Business_detail,Business_Register
+from .models import FindBusiness, Trending, UserRegister, Business_detail,Business_List
 
 
 def index(request):
@@ -44,10 +44,11 @@ def list(request):
         Image=request.post['image']
         Adescription=request.post['description']
 
-        business=Business_Register(business_name=Bname,pincode=pin,email=Email,category=category,
+        business=Business_List.business_list_set.Create(business_name=Bname,pincode=pin,email=Email,category=category,
                                    phone=Bphone,address=Address,landmark=Landmark,website=Waddress,
                                     Description=Adescription,image=Image)
         business.save()
+        return redirect('/')
     
     else:
         return render(request,'list.html')

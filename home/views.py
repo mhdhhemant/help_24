@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib import auth
 from django.contrib.auth.models import User
 from accounts.models import Users
-from django.core.mail import send_mail
+from django.core.mail import send_mail 
 # Create your views here.
 
 from .models import FindBusiness, Trending, UserRegister, Business_detail,Business_List
@@ -34,16 +34,16 @@ def contact(request):
 
 def list(request):
     if request.method=="POST":
-        pin=request.post['pincode']
-        Bname=request.post['businessname']
-        category=request.post['category']
-        Bphone=request.post['phone']
-        Address=request.post['address']
-        Landmark=request.post['landmark']
-        Waddress=request.post['webaddress']
-        Email=request.post['email']
-        Image=request.post['image']
-        Adescription=request.post['description']
+        pin=request.POST['pincode']
+        Bname=request.POST['businessname']
+        category=request.POST['category']
+        Bphone=request.POST['phone']
+        Address=request.POST['address']
+        Landmark=request.POST['landmark']
+        Waddress=request.POST['webaddress']
+        Email=request.POST['email']
+        Image=request.POST['image']
+        Adescription=request.POST['description']
 
         business=Business_List(business_name=Bname,pincode=pin,email=Email,category=category,
                                    phone=Bphone,address=Address,landmark=Landmark,website=Waddress,
@@ -70,12 +70,13 @@ def login(request):
         pass1=request.POST['password']
         
         user=auth.authenticate(username=use,password=pass1)
-        print(user)
+        
         if user is not None:
             auth.login(request,user)
             
             return redirect('/')
         else:
+            messages.info(request,"*Invalid Credentials")
             return redirect('login')
     else:
         return render(request, 'login.html')
@@ -96,10 +97,10 @@ def register(request):
         username = request.POST['username']
         role = request.POST['role']
         if password == password1:
-            if UserRegister.objects.filter(username=username).exists():
+            if Users.objects.filter(username=username).exists():
                 messages.info(request, '*Username taken')
                 return redirect('register')
-            elif UserRegister.objects.filter(email=email).exists():
+            elif Users.objects.filter(email=email).exists():
                 messages.info(request, '*Email taken')
                 return redirect('register')
             else:
@@ -121,7 +122,7 @@ def register(request):
                                         )
                     user.save()
                 
-                user1.save()
+                user1.save();
                 send_mail(
                     'Confirmation',
                     'This mail is intended to use for confirming your account.',
@@ -141,5 +142,4 @@ def register(request):
         return render(request, 'register.html')
 
 
-def list(request):
-    return render(request, 'list.html')
+

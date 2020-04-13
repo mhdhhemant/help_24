@@ -110,14 +110,22 @@
           <div class="col-md-7 mb-5"  data-aos="fade" >
 
             <h2 class="mb-5 text-black">Log In</h2>
+            <h4 class="mb-5 text-center">
+            
+              {% for message in messages %}
+                 {{message}}
+  
+              {% endfor %}
+              
+          </h4>
 
-            <form action="" method="POST" class="p-5 bg-white">
+            <form action="login" method="POST" class="p-5 bg-white">
               {% csrf_token %}
              <div class="row form-group">
                
                <div class="col-md-12">
-                 <label class="text-black" for="email">Username</label> 
-                 <input type="text" id="email" name="username" class="form-control" required>
+                 <label class="text-black" for="username">Username</label> 
+                 <input type="text" id="username" name="username" class="form-control" required>
                </div>
              </div>
 

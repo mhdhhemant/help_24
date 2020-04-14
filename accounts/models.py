@@ -8,3 +8,5 @@ class Users(AbstractUser):
 
 
     USERNAME_FIELD = 'username'
+
+    

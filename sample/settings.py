@@ -120,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 AUTHENTICATION_BACKENDS=['django.contrib.auth.backends.ModelBackend',
-                          'home.authenticate.EmailBackend',]
+                          'home.Authenticate.EmailBackend',]
 
 
 # Internationalization

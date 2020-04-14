@@ -47,7 +47,7 @@ def list(request):
 
         business=Business_List(business_name=Bname,pincode=pin,email=Email,category=category,
                                    phone=Bphone,address=Address,landmark=Landmark,website=Waddress,
-                                    Description=Adescription,image=Image)
+                                    Description=Adescription,image='pics/'+Image)
         business.save()
         return redirect('/')
     
@@ -56,7 +56,8 @@ def list(request):
 
 
 def listings(request):
-    return render(request, 'listings.html',{'numbers':range(10)})
+    business1=Business_List.objects.all()
+    return render(request, 'listings.html',{'business1':business1})
 
 
 def listingssingle(request):

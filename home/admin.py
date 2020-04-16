@@ -1,6 +1,9 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+from accounts.models import Users
 from .models import Trending,FindBusiness,UserRegister,Business_detail,Business_List
 # Register your models here.
+
 
 admin.site.register(Trending)
 admin.site.register(FindBusiness)

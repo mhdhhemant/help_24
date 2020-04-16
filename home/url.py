@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from . import views
+from .views import ActivateAccount
 
 urlpatterns = [
 
@@ -19,6 +20,6 @@ urlpatterns = [
     path('login', views.login, name='login'),
     path('register', views.register, name='register'),
     path('logout',views.logout,name='logout'),
-    
+    path('activate/<uidb64>/<token>/', ActivateAccount.as_view(), name='activate'),
 
 ]
